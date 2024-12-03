@@ -41,12 +41,40 @@ namespace Bibliotec_mvc.Controllers
         public IActionResult Cadastro(){
 
             ViewBag.admin = HttpContext.Session.GetString("Admin")!;
-            
+
             ViewBag.Categoria = context.Categoria.ToList();
 
+            return View();
+        }  
+
+        //metodo para cadastrar um livro
+        [Route("(Cadastrar)")]
+        public IActionResult Cadastrar(IFormCollection form){ 
+
+            Livro novolivro = new Livro();
+
+           //o que meu usuario escrever no formulario sera atribuido ao novolivro
+            novolivro.Nome = form["Nome"].ToString();
+            novolivro.Descricao = form["Descricao"].ToString();
+            novolivro.Editora = form["Editora"].ToString();
+            novolivro.Escritor = form["Escritor"].ToString();
+            novolivro.Idioma = form["Idioma"].ToString();
+
+           //img 
+           context.Livro.Add(novolivro);
+
+           context.SaveChanges();
 
             return View();
         }
+
+
+
+
+
+
+
+
 
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         // public IActionResult Error()
