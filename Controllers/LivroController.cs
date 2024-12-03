@@ -33,10 +33,16 @@ namespace Bibliotec_mvc.Controllers
              ViewBag.Livros = listaLivros;
              ViewBag.LivrosComReserva = livrosReservados;
 
+            return View();
+        } 
 
+        [Route("(Cadastro)")]
+        //Metodo que retorna a tela de cadastro:
+        public IActionResult Cadastro(){
 
-
-
+            ViewBag.admin = HttpContext.Session.GetString("Admin")!;
+            
+            ViewBag.Categoria = context.Categoria.ToList();
 
 
             return View();
