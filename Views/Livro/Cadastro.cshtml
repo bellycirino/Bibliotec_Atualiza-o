@@ -40,12 +40,13 @@
                 <div class="form-group">
                     <label class="form-label" for="categoria">Categoria</label>
                     <ul>
-                        @foreach(Categoria categoria in ViewBag.Categpria)
+                        
+                        @foreach (Categoria categoria in ViewBag.Categorias)
                         {
-                        <li>
-                            <input name="Categoria" type="checkbox" value="@categoria.CategoriaID">
-                            <label class="form-label-categoria" for="Categoria">@ViewBag.Nome</label>
-                        </li>
+                                <li>
+                                    <input name="Categoria" type="checkbox" value="@categoria.CategoriaID">
+                                    <label class="form-label-categoria" for="Categoria">@categoria.Nome</label>
+                                </li>
                         }
                     </ul>
                 </div>

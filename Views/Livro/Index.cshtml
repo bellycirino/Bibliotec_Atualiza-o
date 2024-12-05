@@ -22,21 +22,24 @@
                 </tr>
             </thead>
 
-            <tbody> 
-                @foreach(var livro in ViewBag.Livros){
+            <tbody>
+                @foreach (var livro in ViewBag.Livros)
+                {
 
-                <tr>
-                    <td data-cell="titulo">@livro.Nome</td>
-                    <td data-cell="reservado">@(ViewBag.LivrosComReserva.ConteinsKey(livro.LivroID)? "sim": "nao") </td>
-                    @* <td data-cell="data devol.">@(ViewBag.LivrosComReserva.ConteinsKey(livro.LivroID)?
+                    <tr>
+                        <td data-cell="titulo">@livro.Nome</td>
+                        <td data-cell="reservado">@(ViewBag.LivrosComReserva.ConteinsKey(livro.LivroID) ? "sim" : "nao") </td>
+                        @* <td data-cell="data devol.">@(ViewBag.LivrosComReserva.ConteinsKey(livro.LivroID)?
                          ViewBag.LivrosComReserva[livro.LivroID].ToString("dd/MM/yyyy"  "nao possui reserva"))</td> *@
-                    <td class="icon" data-cell="editar"><a class="navbar-item"><img style="width: 40px;"
-                                src="~/images/editar.svg" alt=""></a></td>
-                    <td class="icon" data-cell="detalhes"><a class="navbar-item"><img style="width: 40px;"
-                                src="~/images/detalhes.svg" alt=""></a></td>
-                    <td class="icon" data-cell="excluir"><a class="navbar-item"><img style="width: 40px;"
-                                src="~/images/excluir.svg" alt=""></a></td>
-                </tr>
+
+                        <td class="icon" data-cell="editar"><a class="navbar-item"><img style="width: 40px;"
+                                    src="~/images/editar.svg" alt=""></a></td>
+                        <td class="icon" data-cell="detalhes"><a class="navbar-item"><img style="width: 40px;"
+                                    src="~/images/detalhes.svg" alt=""></a></td>
+                        <td class="icon" data-cell="excluir"><a class="navbar-item" asp-controller="Livro"
+                                asp-action="Excluir" asp-route-id="@livro.LivroID"><img style="width: 40px;"
+                                    src="~/images/excluir.svg" alt=""></a></td>
+                    </tr>
                 }
             </tbody>
         </table>
